@@ -4,23 +4,28 @@ const { wishlistUrl } = useRuntimeConfig().public
 </script>
 
 <template>
-  <main class="min-h-screen bg-amber-50 text-stone-800">
-    <nav class="flex justify-end gap-2 p-4" :aria-label="$t('language')">
+  <main class="min-h-screen">
+    <nav class="flex justify-end gap-space-2 p-space-4" :aria-label="$t('language')">
       <button
         v-for="l in locales"
         :key="l.code"
-        class="rounded-full px-3 py-1 text-sm font-medium"
-        :class="l.code === locale ? 'bg-orange-500 text-white' : 'bg-white'"
+        class="rounded-pill px-space-3 py-space-1 text-label"
+        :class="l.code === locale ? 'bg-surface-raised shadow-sm' : 'text-ink-muted'"
         @click="setLocale(l.code)"
       >
         {{ l.name }}
       </button>
     </nav>
 
-    <section class="mx-auto max-w-2xl px-4 py-16 text-center">
-      <h1 class="text-4xl font-extrabold">{{ $t('hero.title') }}</h1>
-      <p class="mt-4 text-lg">{{ $t('hero.subtitle') }}</p>
-      <a :href="wishlistUrl || '#'" target="_blank" rel="noopener" class="mt-8 inline-block rounded-full bg-orange-500 px-6 py-3 font-bold text-white">
+    <section class="mx-auto max-w-2xl px-space-4 py-space-8 text-center">
+      <h1 class="font-serif text-display md:text-display-xl">{{ $t('hero.title') }}</h1>
+      <p class="mt-space-4 text-body-lg text-ink-muted">{{ $t('hero.subtitle') }}</p>
+      <a
+        :href="wishlistUrl || '#'"
+        target="_blank"
+        rel="noopener"
+        class="lift mt-space-6 inline-block rounded-pill bg-tangerine px-space-5 py-space-3 text-label text-on-tangerine no-underline shadow-sm hover:shadow-md"
+      >
         {{ $t('hero.cta') }}
       </a>
     </section>

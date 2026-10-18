@@ -1,3 +1,113 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Fonts: self-hosted variable files from the design system (public/fonts) */
+@font-face { font-family: 'Fraunces'; src: url('/fonts/Fraunces-latin-full.woff2') format('woff2'); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Fraunces'; src: url('/fonts/Fraunces-latin-full-italic.woff2') format('woff2'); font-weight: 100 900; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Figtree'; src: url('/fonts/Figtree-latin-wght.woff2') format('woff2'); font-weight: 300 900; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Figtree'; src: url('/fonts/Figtree-latin-wght-italic.woff2') format('woff2'); font-weight: 300 900; font-style: italic; font-display: swap; }
+
+@layer utilities {
+  /* Fraunces always runs with its SOFT axis up, so serifs feel rounded and friendly */
+  .font-serif { font-variation-settings: 'SOFT' 100; }
+}
+
+@layer base {
+  /* Theme tokens generated from the Bigotes de San Vicente design system (tokens.json).
+     Colours are stored as RGB channels so Tailwind opacity modifiers work (bg-sun/50). */
+  :root {
+    color-scheme: light;
+    --color-surface: 255 247 232;
+    --color-surface-raised: 255 255 255;
+    --color-surface-sunk: 253 235 200;
+    --color-line: 233 214 181;
+    --color-line-strong: 154 123 98;
+    --color-ink: 43 29 20;
+    --color-ink-muted: 110 86 70;
+    --color-tangerine: 242 100 25;
+    --color-tangerine-soft: 255 227 207;
+    --color-tangerine-text: 178 60 0;
+    --color-on-tangerine: 43 29 20;
+    --color-sun: 255 201 60;
+    --color-sun-soft: 255 232 163;
+    --color-on-sun: 43 29 20;
+    --color-sea: 8 112 107;
+    --color-sea-soft: 212 241 238;
+    --color-on-sea: 255 255 255;
+    --color-pink: 255 143 163;
+    --color-pink-soft: 255 225 230;
+    --color-berry: 179 38 74;
+    --color-brick: 180 45 29;
+    --color-brick-soft: 253 226 220;
+    --color-link: var(--color-tangerine-text);
+    --color-focus-ring: var(--color-sea);
+    --shadow-sm: 0 1px 2px rgba(43,29,20,0.06), 0 2px 6px rgba(43,29,20,0.06);
+    --shadow-md: 0 2px 4px rgba(43,29,20,0.04), 0 12px 28px rgba(43,29,20,0.10);
+    --shadow-lg: 0 4px 8px rgba(43,29,20,0.04), 0 24px 56px rgba(43,29,20,0.14);
+  }
+  
+  /* Noche (dark): follows the OS unless the page forces a theme with .light / .dark on <html> */
+  @media (prefers-color-scheme: dark) {
+    :root:not(.light) {
+      color-scheme: dark;
+      --color-surface: 29 22 18;
+      --color-surface-raised: 42 32 26;
+      --color-surface-sunk: 20 15 12;
+      --color-line: 74 58 47;
+      --color-line-strong: 140 116 99;
+      --color-ink: 251 241 226;
+      --color-ink-muted: 205 184 165;
+      --color-tangerine: 255 122 51;
+      --color-tangerine-soft: 69 33 12;
+      --color-tangerine-text: 255 154 92;
+      --color-on-tangerine: 29 22 18;
+      --color-sun: 255 207 77;
+      --color-sun-soft: 61 47 10;
+      --color-on-sun: 29 22 18;
+      --color-sea: 60 198 189;
+      --color-sea-soft: 15 53 51;
+      --color-on-sea: 29 22 18;
+      --color-pink: 255 159 177;
+      --color-pink-soft: 74 31 42;
+      --color-berry: 255 143 168;
+      --color-brick: 255 138 117;
+      --color-brick-soft: 69 24 15;
+      --color-link: var(--color-tangerine-text);
+      --color-focus-ring: var(--color-sea);
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.3), 0 2px 6px rgba(0,0,0,0.25);
+      --shadow-md: 0 2px 4px rgba(0,0,0,0.3), 0 12px 28px rgba(0,0,0,0.4);
+      --shadow-lg: 0 4px 8px rgba(0,0,0,0.3), 0 24px 56px rgba(0,0,0,0.5);
+    }
+  }
+  :root.dark {
+    color-scheme: dark;
+    --color-surface: 29 22 18;
+    --color-surface-raised: 42 32 26;
+    --color-surface-sunk: 20 15 12;
+    --color-line: 74 58 47;
+    --color-line-strong: 140 116 99;
+    --color-ink: 251 241 226;
+    --color-ink-muted: 205 184 165;
+    --color-tangerine: 255 122 51;
+    --color-tangerine-soft: 69 33 12;
+    --color-tangerine-text: 255 154 92;
+    --color-on-tangerine: 29 22 18;
+    --color-sun: 255 207 77;
+    --color-sun-soft: 61 47 10;
+    --color-on-sun: 29 22 18;
+    --color-sea: 60 198 189;
+    --color-sea-soft: 15 53 51;
+    --color-on-sea: 29 22 18;
+    --color-pink: 255 159 177;
+    --color-pink-soft: 74 31 42;
+    --color-berry: 255 143 168;
+    --color-brick: 255 138 117;
+    --color-brick-soft: 69 24 15;
+    --color-link: var(--color-tangerine-text);
+    --color-focus-ring: var(--color-sea);
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.3), 0 2px 6px rgba(0,0,0,0.25);
+    --shadow-md: 0 2px 4px rgba(0,0,0,0.3), 0 12px 28px rgba(0,0,0,0.4);
+    --shadow-lg: 0 4px 8px rgba(0,0,0,0.3), 0 24px 56px rgba(0,0,0,0.5);
+  }
+}
